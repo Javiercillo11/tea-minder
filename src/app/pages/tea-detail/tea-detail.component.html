@@ -1,0 +1,13 @@
+<div class="text-center">
+    <div *ngIf="tea" class="card p-3 mt-3">
+        <h2>{{ tea.name }}</h2>
+        <p><strong>ID:</strong> {{ tea.id }}</p>
+        <p><strong>Descripción:</strong> {{ tea.description }}</p>
+        <p><strong>ID de Usuario:</strong> {{ tea.userId }}</p>
+    </div>
+    <div *ngIf="!tea" class="card p-3 mt-3">
+        <p>No se encontró el té</p>
+    </div>
+    <br>
+    <!-- <button routerLink="/a" routerLinkActive="router-link-active" class="btn btn-primary">Listado</button> -->
+</div>

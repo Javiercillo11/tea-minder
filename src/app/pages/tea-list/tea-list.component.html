@@ -1,0 +1,78 @@
+<div>
+  <br><h1> LISTADO DE TÉS </h1><br>
+</div>
+
+<div class="container">
+
+<div class="agregar">
+  <button class="btn btn-primary" (click)="showAddForm()">Agregar Té</button>
+  <form *ngIf="showForm" (submit)="addTea()">
+    <div class="form-group">
+      <label for="id">ID del Té</label>
+      <input type="text" class="form-control" id="id" name="id" [(ngModel)]="newTea.id">
+    </div>
+    <div class="form-group">
+      <label for="name">Nombre del Té</label>
+      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="newTea.name">
+    </div>
+    <div class="form-group">
+      <label for="description">Descripción del Té</label>
+      <textarea class="form-control" id="description" name="description" [(ngModel)]="newTea.description"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="id">ID Usuario</label>
+      <input type="text" class="form-control" id="userId" name="userId" [(ngModel)]="newTea.userId">
+    </div>
+    <br>
+    <button type="submit" class="btn btn-success" style="margin-right: 5px;">Agregar</button>
+    <button type="button" class="btn btn-secondary" (click)="hideAddForm()">Cancelar</button>
+  </form>
+</div>
+
+  
+<div class="row">
+  <div class="col-xs-12">
+    <table class="table table-striped">
+      <tbody>
+        <tr *ngFor="let tea of teas; let idx = index">
+          <td>
+            {{ idx + 1 }}. {{ tea.name }}
+          </td>
+          <td>
+            <button class="btn btn-success btn-xs" (click)="editTea(tea)"> Editar </button>
+          </td>
+          <td>
+            <button class="btn btn-danger btn-xs" (click)="deleteTea(tea.id)"> Borrar </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row" *ngIf="editingTea">
+  <div class="col-xs-12">
+    <form (submit)="saveEditedTea()">
+      <div class="form-group">
+        <label for="editId">ID del Té</label>
+        <input type="text" class="form-control" id="editId" name="editId" [(ngModel)]="editingTea.id">
+      </div>
+      <div class="form-group">
+        <label for="editName">Nombre del Té</label>
+        <input type="text" class="form-control" id="editName" name="editName" [(ngModel)]="editingTea.name">
+      </div>
+      <div class="form-group">
+        <label for="editDescription">Descripción del Té</label>
+        <textarea class="form-control" id="editDescription" name="editDescription" [(ngModel)]="editingTea.description"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="editUserId">ID Usuario</label>
+        <input type="text" class="form-control" id="editUserId" name="editUserId" [(ngModel)]="editingTea.userId">
+      </div>
+      <br>
+      <button type="submit" class="btn btn-success" style="margin-right: 5px;">Guardar</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancelar</button>
+    </form>
+  </div>
+</div>
+</div>
