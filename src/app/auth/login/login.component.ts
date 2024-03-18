@@ -33,7 +33,7 @@ export class LoginComponent {
     if (this.myForm.valid) {
       const { email, password } = this.myForm.value;
       this.userService.login(email, password).subscribe(user => {
-        if (user) {
+        if (user.user) {
           this.authService.login(email, password);
           /* this.loadUserTeas(email); */
           this.fakeLoading();

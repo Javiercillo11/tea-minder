@@ -52,7 +52,7 @@ export class TeaListComponent implements OnInit {
   }
 
   editTea(tea: Tea): void {
-    this.editingTea = { ...tea }; // Hacemos una copia para evitar modificar directamente el objeto original
+    this.editingTea = { ...tea };
   }
 
   cancelEdit(): void {
